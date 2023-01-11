@@ -68,13 +68,12 @@ class PdaApplicationTests {
 	// Set a contact.
 	@Test
 	void setContact() throws Exception{
-		String data = "{\"contactId\":\"2\",\"countryCode\":\"91\",\"primaryMobileNumber\":\"91\",\"secondaryMobileNumber\":\"91\",\"userId\":\"1\"}";	
+		String data = "{\"contactId\":\"1\",\"countryCode\":\"91\",\"primaryMobileNumber\":\"91\",\"secondaryMobileNumber\":\"91\",\"userId\":\"1\"}";	
 		mockMvc.perform(MockMvcRequestBuilders.post("/contacts")
 		 	 			.contentType(MediaType.APPLICATION_JSON)
 		 	 			.content(data)
 		 	 			.accept(MediaType.APPLICATION_JSON))
 						// .header(HttpHeaders.AUTHORIZATION,"bearer"))
-
 						.andExpect(status().isOk())
 		 	        	//.andExpect(jsonPath("$").value("true"))
 		 	        	.andReturn();						
