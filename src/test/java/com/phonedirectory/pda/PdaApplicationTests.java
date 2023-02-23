@@ -19,8 +19,7 @@ import com.phonedirectory.app.PdaApplication;
 
 
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-
-
+import static org.mockito.ArgumentMatchers.any;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 
 
@@ -83,19 +82,17 @@ class PdaApplicationTests {
 
 	
 	@Test
-	void getContact() throws Exception{
-		
-
-		//String data = "{\"countryCode\":\"91\",\"primaryMobileNumber\":\"91\",\"secondaryMobileNumber\":\"91\",\"userId\":\"2\"}";	
-		  mockMvc.perform(MockMvcRequestBuilders.get("/contacts")
-						.accept(MediaType.APPLICATION_JSON))
-						.andExpect(MockMvcResultMatchers.status().isOk())
-						.andDo(print())
-						//.andExpect(MockMvcResultMatchers.jsonPath("$[*].primaryMobileNumber").value("91"))
-						.andReturn(); 
-
-			
-	}					
+    public void getContact() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.get("/contacts")
+            .accept(MediaType.APPLICATION_JSON))
+            .andExpect(MockMvcResultMatchers.status().isOk())
+            .andDo(print())
+            .andExpect(MockMvcResultMatchers.jsonPath("$[*].countryCode").value(any(String.class)))
+            .andExpect(MockMvcResultMatchers.jsonPath("$[*].primaryMobileNumber").value(any(String.class)))
+            .andExpect(MockMvcResultMatchers.jsonPath("$[*].secondaryMobileNumber").value(any(String.class)))
+            .andExpect(MockMvcResultMatchers.jsonPath("$[*].userId").value(any(String.class)))
+            .andReturn();
+    }				
 	
 	// Get the phone number of a user.
 	@Test
