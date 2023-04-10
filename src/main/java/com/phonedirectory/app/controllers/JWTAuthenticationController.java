@@ -59,7 +59,8 @@ public class JWTAuthenticationController {
 
 		return ResponseEntity.ok(new JWTResponse(token));
 		} catch (Exception e) {
-			logger.log(null, e);
+			//logger.log(null, e);
+			System.out.println(e);
 		}
 		return null;
 		

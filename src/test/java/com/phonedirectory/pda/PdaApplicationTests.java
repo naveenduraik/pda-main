@@ -1,12 +1,9 @@
 package com.phonedirectory.pda;
 
-import org.junit.Before;
 import org.junit.jupiter.api.Test;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.http.HttpHeaders;
@@ -23,9 +20,6 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 
 
-
-
-@RunWith(SpringJUnit4ClassRunner.class) 
 @SpringBootTest(classes = PdaApplication.class)
 @AutoConfigureMockMvc
 class PdaApplicationTests {	
@@ -78,11 +72,11 @@ class PdaApplicationTests {
 		 	        	.andReturn();						
 	}
 
-	// Get a single contact.
+    // Get a single contact.
 
-	
-	@Test
-    public void getContact() throws Exception {
+    
+    @Test
+    void getContact() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.get("/contacts")
             .accept(MediaType.APPLICATION_JSON))
             .andExpect(MockMvcResultMatchers.status().isOk())
