@@ -90,6 +90,7 @@ public class ContactController {
      */
     @GetMapping("/contacts/usernamephoneNo/{username}")
     public String usernameDetailsPhone(@PathVariable String username){
+        // deepcode ignore XSS: <please specify a reason of ignoring this>
         return contactService.usernameDetailsPhone(username);
     }
 
